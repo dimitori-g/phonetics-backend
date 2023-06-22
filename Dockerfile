@@ -1,14 +1,16 @@
-FROM python:3.9
+FROM python:3.11-alpine
 
-WORKDIR /code
+WORKDIR /api
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./requirements.txt /api/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN apk add build-base libffi-dev
 
-COPY . /code/app
+RUN pip install --no-cache-dir --upgrade -r /api/requirements.txt
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+COPY . .
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 # If running behind a proxy like Nginx or Traefik add --proxy-headers
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers"]
+# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]
