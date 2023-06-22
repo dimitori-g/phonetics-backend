@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ## Start dev server
 ```
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 ## Interactive API docs
@@ -32,11 +32,11 @@ http://127.0.0.1:8000/redoc
 
 
 ## Using docker
-### Create image
-```
-docker build -t fastapi .
-```
 ### Run container
 ```
-docker run -d --name fastapicontainer -p 80:80 fastapi
+docker-compose up -d
+```
+### Stop container
+```
+docker-compose down
 ```
