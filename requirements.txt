@@ -1,2 +1,7 @@
 fastapi==0.95.2
 uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+python-dotenv
