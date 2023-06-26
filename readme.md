@@ -11,11 +11,11 @@ POSTGRES_DB=your_db
 
 ### Run container
 ```
-docker-compose up -d
+docker-compose -f docker-compose-dev.yml up
 ```
 ### Stop container
 ```
-docker-compose down
+docker-compose -f docker-compose-dev.yml down
 ```
 ### Interactive API docs
 http://0.0.0.0:8000/docs
