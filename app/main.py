@@ -54,23 +54,6 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 
-@app.post(
-        "/users/{user_id}/items/",
-        tags=["Users"],
-        response_model=schemas.Item
-)
-def create_item_for_user(
-    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
-):
-    return crud.create_user_item(db=db, item=item, user_id=user_id)
-
-
-@app.get("/items/", tags=["Items"], response_model=list[schemas.Item])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = crud.get_items(db, skip=skip, limit=limit)
-    return items
-
-
 @app.post("/login", tags=["Users"], response_model=schemas.Token)
 def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
@@ -91,3 +74,11 @@ def login_for_access_token(
         data={"sub": user.email}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
+
+
+@app.get("/phonetic", tags=["Phonetics"], response_model=schemas.Phonetic)
+def read_phonetic(glyph: str, db: Session = Depends(get_db)):
+    phonetic = crud.get_phonetic_by_glyph(db, glyph=glyph)
+    if phonetic is None:
+        raise HTTPException(status_code=404, detail="Phonetic not found")
+    return phonetic
