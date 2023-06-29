@@ -1,4 +1,4 @@
-## Simple CRUD app with Fastapi and Postgresql
+## API for phonetics
 
 ### Create .env file with credentials
 ```
@@ -20,9 +20,7 @@ docker-compose -f docker-compose-dev.yml down
 ```
 ### Interactive API docs
 http://0.0.0.0:8000/docs
-<img width="1438" alt="スクリーンショット 2023-05-25 12 26 33" src="https://github.com/dimitori-g/fastapi-sample/assets/37291504/6acbdd7c-d695-415f-b177-d2759c1c5e55">
-http://0.0.0.0:8000/redoc
-<img width="1696" alt="スクリーンショット 2023-05-25 12 26 50" src="https://github.com/dimitori-g/fastapi-sample/assets/37291504/1ab493af-8c34-49d4-b2a9-2eadc9389ee3">
+![screencapture-0-0-0-0-8000-docs-2023-06-29-17_03_48](https://github.com/dimitori-g/fastapi-sample/assets/37291504/29079542-6765-4820-8cd9-d04724cae1b6)
 
 ### Init venv
 ```
