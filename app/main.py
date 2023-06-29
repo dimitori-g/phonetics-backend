@@ -17,17 +17,13 @@ tags_metadata = [
         "description": "Operations with users. The **login** logic is also here.",
     },
     {
-        "name": "Items",
-        "description": "Manage items. So _fancy_ they have their own docs.",
-        "externalDocs": {
-            "description": "Items external docs",
-            "url": "https://fastapi.tiangolo.com/",
-        },
+        "name": "Phonetics",
+        "description": "Manage phonetics. For example phonetic for glyph 感 is 咸.",
     },
 ]
 
 app = FastAPI(
-    title="MyAPI",
+    title="Phonetics API",
     openapi_tags=tags_metadata
     )
 
