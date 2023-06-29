@@ -2,24 +2,32 @@ version: '3'
 services:
   api:
     env_file: .env
-    container_name: fastapi
+    image: fastapi_app
+    container_name: fastapi_app
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 8000:8000
+    networks:
+      - fastapiappnetwork
     depends_on:
       - db
     volumes:
       - ./app:/api/app/
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
   db:
+      env_file: .env
       image: postgres:15.3-alpine
+      container_name: fastapi_db
       volumes:
         - postgres_data:/var/lib/postgresql/data/
-      env_file: .env
       ports:
         - 5432:5432
+      networks:
+      - fastapiappnetwork
 
 volumes:
     postgres_data:
+networks:
+  fastapiappnetwork:
