@@ -33,3 +33,12 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
