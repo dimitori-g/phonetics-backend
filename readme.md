@@ -7,6 +7,7 @@ POSTGRES_PASSWORD=your_password
 POSTGRES_SERVER=your_server
 POSTGRES_PORT=your_port
 POSTGRES_DB=your_db
+SECRET_KEY=your_secret_key_for_token
 ```
 
 ### Run container
