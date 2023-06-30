@@ -18,6 +18,10 @@ docker-compose -f docker-compose-dev.yml up
 ```
 docker-compose -f docker-compose-dev.yml down
 ```
+### Use file below for seeding DB
+
+https://github.com/dimitori-g/phonetics_script/blob/master/data/phonetics.csv
+
 ### Interactive API docs
 http://0.0.0.0:8000/docs
 ![screencapture-0-0-0-0-8000-docs-2023-06-29-17_03_48](https://github.com/dimitori-g/fastapi-sample/assets/37291504/29079542-6765-4820-8cd9-d04724cae1b6)
