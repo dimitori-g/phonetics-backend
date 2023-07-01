@@ -18,7 +18,7 @@ docker-compose -f docker-compose-dev.yml up
 ```
 docker-compose -f docker-compose-dev.yml down
 ```
-### Use file below for seeding DB
+### Use data below for seeding DB
 
 https://github.com/dimitori-g/phonetics-tools/blob/master/data/
 
