@@ -20,7 +20,7 @@ docker-compose -f docker-compose-dev.yml down
 ```
 ### Use file below for seeding DB
 
-https://github.com/dimitori-g/phonetics_script/blob/master/data/
+https://github.com/dimitori-g/phonetics-tools/blob/master/data/phonetics.csv
 
 ### Interactive API docs
 http://0.0.0.0:8000/docs
