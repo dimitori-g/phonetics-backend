@@ -31,3 +31,16 @@ class Phonetic(BaseModel):
     phonetic: str
     class Config:
         orm_mode = True
+
+
+class Glyph(BaseModel):
+    id: int
+    glyph: str
+    pinyin: str
+    cantonese: str
+    on: str
+    kun: str
+    korean: str
+    vietnamese: str
+    class Config:
+        orm_mode = True

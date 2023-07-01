@@ -78,3 +78,11 @@ def read_phonetic(glyph: str, db: Session = Depends(get_db)):
     if phonetic is None:
         raise HTTPException(status_code=404, detail="Phonetic not found")
     return phonetic
+
+
+@app.get("/glyph", tags=["Phonetics"], response_model=schemas.Glyph)
+def read_glyph(glyph: str, db: Session = Depends(get_db)):
+    glyph = crud.get_glyph(db, glyph=glyph)
+    if glyph is None:
+        raise HTTPException(status_code=404, detail="Glyph not found")
+    return glyph
