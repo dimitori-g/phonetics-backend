@@ -12,11 +12,11 @@ SECRET_KEY=your_secret_key_for_token
 
 ### Run container
 ```
-docker-compose -f docker-compose-dev.yml up
+docker-compose up
 ```
 ### Stop container
 ```
-docker-compose -f docker-compose-dev.yml down
+docker-compose down
 ```
 ### Use data below for seeding DB
 

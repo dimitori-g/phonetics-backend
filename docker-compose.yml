@@ -2,8 +2,8 @@ version: '3'
 services:
   api:
     env_file: .env
-    image: fastapi_app
-    container_name: fastapi_app
+    image: phonetics_app
+    container_name: phonetics_app
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,13 +13,18 @@ services:
       - fastapiappnetwork
     depends_on:
       - db
+    restart: always
     volumes:
       - ./app:/api/app/
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "sh ./prestart.sh && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
   db:
       env_file: .env
       image: postgres:15.3-alpine
-      container_name: fastapi_db
+      container_name: phonetics_db
+      restart: always
       volumes:
         - postgres_data:/var/lib/postgresql/data/
       ports:
