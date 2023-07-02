@@ -36,6 +36,7 @@ class Phonetic(BaseModel):
 class Glyph(BaseModel):
     id: int
     glyph: str
+    phonetic: str
     pinyin: str
     cantonese: str
     on: str

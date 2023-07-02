@@ -72,15 +72,7 @@ def login_for_access_token(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@app.get("/phonetic", tags=["Phonetics"], response_model=schemas.Phonetic)
-def read_phonetic(glyph: str, db: Session = Depends(get_db)):
-    phonetic = crud.get_phonetic_by_glyph(db, glyph=glyph)
-    if phonetic is None:
-        raise HTTPException(status_code=404, detail="Phonetic not found")
-    return phonetic
-
-
-@app.get("/glyph", tags=["Phonetics"], response_model=schemas.Glyph)
+@app.get("/glyph", tags=["Glyphs"], response_model=schemas.Glyph)
 def read_glyph(glyph: str, db: Session = Depends(get_db)):
     glyph = crud.get_glyph(db, glyph=glyph)
     if glyph is None:

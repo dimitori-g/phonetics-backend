@@ -10,17 +10,12 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-class Phonetic(Base):
-    __tablename__ = "phonetics"
-    id = Column(Integer, primary_key=True, index=True)
-    glyph = Column(String)
-    phonetic = Column(String)
-
 
 class Glyph(Base):
     __tablename__ = "glyphs"
     id = Column(Integer, primary_key=True, index=True)
     glyph = Column(String)
+    phonetic = Column(String)
     pinyin = Column(String)
     cantonese = Column(String)
     on = Column(String)
