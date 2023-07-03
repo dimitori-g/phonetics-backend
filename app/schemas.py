@@ -25,23 +25,15 @@ class Token(BaseModel):
     token_type: str
 
 
-class Phonetic(BaseModel):
-    id: int
-    glyph: str
-    phonetic: str
-    class Config:
-        orm_mode = True
-
-
 class Glyph(BaseModel):
-    id: int
-    glyph: str
-    phonetic: str
-    pinyin: str
-    cantonese: str
-    on: str
-    kun: str
-    korean: str
-    vietnamese: str
+    id: int | None = None
+    glyph: str | None = None
+    phonetic: str | None = None
+    pinyin: str | None = None
+    cantonese: str | None = None
+    on: str | None = None
+    kun: str | None = None
+    korean: str | None = None
+    vietnamese: str | None = None
     class Config:
         orm_mode = True
