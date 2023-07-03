@@ -24,15 +24,13 @@ https://github.com/dimitori-g/phonetics-tools/blob/master/data/
 
 ### For example using TablePlus
 
-
 https://github.com/dimitori-g/phonetics-backend/assets/37291504/7159dcb9-fd6b-4b3f-b6c1-ee6922142047
-
-
 
 
 ### Interactive API docs
 http://0.0.0.0:8000/docs
-![screencapture-0-0-0-0-8000-docs-2023-06-29-17_03_48](https://github.com/dimitori-g/fastapi-sample/assets/37291504/29079542-6765-4820-8cd9-d04724cae1b6)
+![2b3b563a-22e0-4baa-ac33-4bacbdbe9c66](https://github.com/dimitori-g/phonetics-backend/assets/37291504/18c3562b-6b37-4e06-8007-4d6e1bbcb51d)
+
 
 ### Init venv
 ```
