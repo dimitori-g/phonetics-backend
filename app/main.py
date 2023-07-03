@@ -2,6 +2,7 @@ from typing import Annotated
 from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas, security
@@ -27,6 +28,18 @@ app = FastAPI(
     openapi_tags=tags_metadata
     )
 
+origins = [
+    "http://localhost",
+    "http://0.0.0.0:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/user/", tags=["Users"], response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
