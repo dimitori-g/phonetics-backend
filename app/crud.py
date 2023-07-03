@@ -23,9 +23,5 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.refresh(db_user)
     return db_user
 
-def get_phonetic_by_glyph(db: Session, glyph: str):
-    return db.query(models.Phonetic).filter(models.Phonetic.glyph == glyph).first()
-
-def get_glyph(db: Session, glyph: str):
-    return db.query(models.Glyph).filter(models.Glyph.glyph == glyph).first()
-
+def get_glyph(db: Session, filters: dict):
+    return db.query(models.Glyph).filter_by(**filters).all()

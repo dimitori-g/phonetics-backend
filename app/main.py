@@ -17,8 +17,8 @@ tags_metadata = [
         "description": "Operations with users. The **login** logic is also here.",
     },
     {
-        "name": "Phonetics",
-        "description": "Manage phonetics. For example phonetic for glyph 感 is 咸.",
+        "name": "Glyphs",
+        "description": "Manage glyphs & phonetics.",
     },
 ]
 
@@ -72,9 +72,18 @@ def login_for_access_token(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@app.get("/glyph", tags=["Glyphs"], response_model=schemas.Glyph)
-def read_glyph(glyph: str, db: Session = Depends(get_db)):
-    glyph = crud.get_glyph(db, glyph=glyph)
-    if glyph is None:
-        raise HTTPException(status_code=404, detail="Glyph not found")
-    return glyph
+@app.get("/glyph", tags=["Glyphs"], response_model=list[schemas.Glyph])
+def read_glyph(glyph: schemas.Glyph = Depends(), db: Session = Depends(get_db)):
+    filters = {key: val for key, val in glyph if val is not None}
+    if not filters:
+        raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Require at least one param"
+            )
+    db_glyph = crud.get_glyph(db, filters=filters)
+    if db_glyph is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Glyph not found"
+        )
+    return db_glyph
